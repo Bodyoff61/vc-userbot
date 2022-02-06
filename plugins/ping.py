@@ -29,7 +29,7 @@ async def _human_time_duration(seconds):
     return ', '.join(parts)
 
 
-@Client.on_message(contact_filter & filters.command(['ping'], prefixes=f"{HNDLR}"))
+@Client.on_message(contact_filter & filters.command(['ping' ,'بينك'], prefixes=f"{HNDLR}"))
 async def ping(client, m: Message):
    start = time()
    current_time = datetime.utcnow()
@@ -39,14 +39,15 @@ async def ping(client, m: Message):
    uptime = await _human_time_duration(int(uptime_sec))
    await m_reply.edit(f"`{delta_ping * 1000:.3f} ms` \n**Uptime ⏳** - `{uptime}`")
 
-@Client.on_message(contact_filter & filters.command(['restart'], prefixes=f"{HNDLR}"))
+@Client.on_message(contact_filter & filters.command(['restart' ,'اعاده التشغيل'], prefixes=f"{HNDLR}"))
 async def restart(client, m: Message):
    await m.reply("`Restarting...`")
    os.execl(sys.executable, sys.executable, *sys.argv)
    # You probably don't need it but whatever
    quit()
 
-@Client.on_message(contact_filter & filters.command(['help'], prefixes=f"{HNDLR}"))
+@Client.on_message(contact_filter & filters.command(['help' ,'مساعده' 
+], prefixes=f"{HNDLR}"))
 async def help(client, m: Message):
    HELP = f"""
 **HELP MENU 🛠**
